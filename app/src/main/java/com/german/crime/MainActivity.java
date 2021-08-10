@@ -2,13 +2,36 @@ package com.german.crime;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button pro1 = findViewById(R.id.programa1);
+        Button pro2 = findViewById(R.id.programa2);
+        Button pro3 = findViewById(R.id.programa3);
+        pro1.setOnClickListener(this);
+        pro2.setOnClickListener(this);
+        pro3.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.programa1:
+                Intent intent = new Intent(this, QuizActivity.class);
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
     }
 }
