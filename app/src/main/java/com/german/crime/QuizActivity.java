@@ -1,6 +1,6 @@
 package com.german.crime;
 
-import androidx.appcompat.app.AppCompatActivity;
+import  androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +18,10 @@ public class QuizActivity extends AppCompatActivity {
     private TextView mQuestionTextView;
 
     private static final String TAG = "QuizActivity";
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
