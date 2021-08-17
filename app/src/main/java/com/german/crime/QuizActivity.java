@@ -19,10 +19,6 @@ public class QuizActivity extends AppCompatActivity {
 
     private static final String TAG = "QuizActivity";
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
