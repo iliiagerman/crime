@@ -1,4 +1,4 @@
-package com.german.crime;
+package com.german.crime.programm1;
 
 public class Question {
     private int mTextResId;
