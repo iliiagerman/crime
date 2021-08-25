@@ -20,7 +20,6 @@ public class QuizActivity extends AppCompatActivity {
     private Button mNextButton;
     private Button mCheatButton;
     private TextView mQuestionTextView;
-
     private static final String TAG = "QuizActivity";
 
     @Override
@@ -35,7 +34,11 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(QuizActivity.this, CheatActivity.class);
+                //можно както и так но я не понял что именно
+//                boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
+//                Intent intent1 = CheatActivity.newIntent(QuizActivity.this, answerIsTrue);
                 startActivity(intent);
+
             }
         });
         mTrueButton = findViewById(R.id.true_button);
