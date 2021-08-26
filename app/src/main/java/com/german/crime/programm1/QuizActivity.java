@@ -2,6 +2,7 @@ package com.german.crime.programm1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,7 +20,9 @@ public class QuizActivity extends AppCompatActivity {
     private Button mFalseButton;
     private Button mNextButton;
     private Button mCheatButton;
+    private boolean mIsCheater;
     private TextView mQuestionTextView;
+    private static final int REQUEST_CODE_CHEAT = 0;
     private static final String TAG = "QuizActivity";
 
     @Override
@@ -37,10 +40,11 @@ public class QuizActivity extends AppCompatActivity {
                 //можно както и так но я не понял что именно
 //                boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
 //                Intent intent1 = CheatActivity.newIntent(QuizActivity.this, answerIsTrue);
-                startActivity(intent);
-
+//                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE_CHEAT);
             }
         });
+
         mTrueButton = findViewById(R.id.true_button);
         mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +69,20 @@ public class QuizActivity extends AppCompatActivity {
         });
         updateQuestion();
     }
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode != Activity.RESULT_OK) {
+            return;
+        }
+        if (requestCode == REQUEST_CODE_CHEAT) {
+            if (data == null) {
+                return;
+            }
+            mIsCheater = CheatActivity.wasAnswerShown(data);
+        }
+    }
+    
     @Override
     public void onStart() {
         super.onStart();
