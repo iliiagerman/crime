@@ -6,6 +6,10 @@
     <string name="incorrect_toast">неправильно!</string>
     <string name="correct_toast">правильно!</string>
     <string name="next_button">Next</string>
+    <string name="crime_title_hint">Enter a title for the crime.</string>
+    <string name="crime_title_label">Title</string>
+    <string name="crime_details_label">Details</string>
+    <string name="crime_solved_label">Solved</string>
     <string name="question_oceans">The Pacific Ocean is larger than
   the Atlantic Ocean.</string>
     <string name="question_mideast">The Suez Canal connects the Red Sea
