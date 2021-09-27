@@ -32,6 +32,7 @@ public class CrimeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_crime, container, false);
+
         mTitleField = (EditText) v.findViewById(R.id.crime_title);
         mTitleField.addTextChangedListener(new TextWatcher() {
             @Override
@@ -51,9 +52,7 @@ public class CrimeFragment extends Fragment {
                 // И здесь тоже
             }
         });
-        mDateButton = (Button) v.findViewById(R.id.crime_date);
-        mDateButton.setText(mCrime.getDate().toString());
-        mDateButton.setEnabled(false);
+
 
         mSolvedCheckBox = (CheckBox) v.findViewById(R.id.crime_solve);
         mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -62,6 +61,9 @@ public class CrimeFragment extends Fragment {
                 mCrime.setSolved(isChecked);
             }
         });
+        mDateButton = (Button) v.findViewById(R.id.crime_date);
+        mDateButton.setText(mCrime.getDate().toString());
+        mDateButton.setEnabled(false);
         return v;
     }
 }
