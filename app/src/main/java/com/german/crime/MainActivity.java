@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.german.crime.Programm2.CrimeActivity;
+import com.german.crime.Programm2.CrimeListActivity;
 import com.german.crime.programm1.QuizActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.programa2:
-                Intent intent1 = new Intent(this, CrimeActivity.class);
+                Intent intent1 = new Intent(this, CrimeListActivity.class);
                 startActivity(intent1);
                 break;
             default:
