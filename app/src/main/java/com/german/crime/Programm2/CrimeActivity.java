@@ -8,9 +8,10 @@ import android.os.Bundle;
 
 import com.german.crime.R;
 
-public class CrimeActivity extends SingleFragmentActivity {
+public class CrimeActivity extends AppCompatActivity {
     @Override
-    protected Fragment createFragment() {
-        return new CrimeFragment();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_crime);
     }
 }
