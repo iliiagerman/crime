@@ -7,8 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.german.crime.Programm2.CrimeActivity;
-import com.german.crime.Programm2.CrimeListActivity;
+import com.german.crime.programm2.CrimeListActivity;
 import com.german.crime.programm1.QuizActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {

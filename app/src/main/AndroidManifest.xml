@@ -15,7 +15,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Programm2.CrimeListActivity" >
+        <activity android:name=".programm2.CrimeListActivity" >
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
@@ -23,6 +23,7 @@
         </activity>
         <activity android:name=".programm1.CheatActivity" />
         <activity android:name=".programm1.QuizActivity" />
+        <activity android:name=".programm2.CrimeActivity" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.german.crime.Programm2;
+package com.german.crime.programm2;
 
 import java.util.Date;
 import java.util.UUID;

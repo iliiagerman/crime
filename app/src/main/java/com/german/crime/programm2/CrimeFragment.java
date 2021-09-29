@@ -1,4 +1,4 @@
-package com.german.crime.Programm2;
+package com.german.crime.programm2;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,7 +11,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.german.crime.R;
