@@ -25,12 +25,17 @@ public class CrimeLab {
 
     private CrimeLab(Context context) {
         mCrimes = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            Crime crime = new Crime();
-            crime.setTitle("Crime #" + i);
-            crime.setSolved(i % 2 == 0); // Для каждого второго объекта
-            mCrimes.add(crime);
-        }
+        //удалил то что что создавала 100 преступлений ниже поставил так чтоб пользователь мог сам добавлять преступления
+//        for (int i = 0; i < 100; i++) {
+//            Crime crime = new Crime();
+//            crime.setTitle("Crime #" + i);
+//            crime.setSolved(i % 2 == 0); // Для каждого второго объекта
+//            mCrimes.add(crime);
+//        }
+    }
+    // теперь пользователь сможет сам добавлять преступления
+    public void addCrime(Crime c) {
+        mCrimes.add(c);
     }
 
     public List<Crime> getCrimes() {
