@@ -23,7 +23,9 @@
         </activity>
         <activity android:name=".programm1.CheatActivity" />
         <activity android:name=".programm1.QuizActivity" />
-        <activity android:name=".programm2.CrimePagerActivity" />
+        <activity android:name=".programm2.CrimePagerActivity"
+            android:parentActivityName=".programm2.CrimeListActivity">
+        </activity>
     </application>
 
 </manifest>
