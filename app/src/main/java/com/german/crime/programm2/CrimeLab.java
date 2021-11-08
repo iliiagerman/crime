@@ -39,6 +39,8 @@ public class CrimeLab {
 
     // теперь пользователь сможет сам добавлять преступления
     public void addCrime(Crime c) {
+        ContentValues values = getContentValues(c);
+        mDatabase.insert(CrimeDbSchema.CrimeTable.NAME, null, values);
     }
 
     public List<Crime> getCrimes() {
