@@ -2,7 +2,11 @@ package com.german.crime.programm2;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
@@ -28,7 +32,9 @@ public class CrimeFragment extends Fragment {
     private static final String DIALOG_DATE = "DialogDate";
 
     private static final int REQUEST_DATE = 0;
+    private static final int REQUEST_CONTACT = 1;
 
+    private Button mSuspectButton;
     private Crime mCrime;
     private EditText mTitleField;
     private Button mDateButton;
@@ -63,7 +69,6 @@ public class CrimeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_crime, container, false);
-
 
 
         mTitleField = (EditText) v.findViewById(R.id.crime_title);
@@ -118,9 +123,30 @@ public class CrimeFragment extends Fragment {
                 i.putExtra(Intent.EXTRA_TEXT, getCrimeReport());
                 i.putExtra(Intent.EXTRA_SUBJECT,
                         getString(R.string.crime_report_subject));
+                //теперь если в интенте есть несколько активити которые подходят под фильтор будет предложен выбор
+                i = Intent.createChooser(i, getString(R.string.send_report));
                 startActivity(i);
             }
         });
+
+        final Intent pickContact = new Intent(Intent.ACTION_PICK,
+                ContactsContract.Contacts.CONTENT_URI);
+        //следуюшая кстрочка отключает кнопку выбора контакта
+//        pickContact.addCategory(Intent.CATEGORY_HOME);
+        mSuspectButton = (Button) v.findViewById(R.id.crime_suspect);
+        mSuspectButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivityForResult(pickContact, REQUEST_CONTACT);
+            }
+        });
+        if (mCrime.getSuspect() != null) {
+            mSuspectButton.setText(mCrime.getSuspect());
+        }
+        PackageManager packageManager = getActivity().getPackageManager();
+        if (packageManager.resolveActivity(pickContact,
+                PackageManager.MATCH_DEFAULT_ONLY) == null) {
+            mSuspectButton.setEnabled(false);
+        }
         return v;
     }
 
@@ -134,6 +160,30 @@ public class CrimeFragment extends Fragment {
                     .getSerializableExtra(DatePickerFragment.EXTRA_DATE);
             mCrime.setDate(date);
             updateDate();
+        } else if (requestCode == REQUEST_CONTACT && data != null) {
+            Uri contactUri = data.getData();
+            // Определение полей, значения которых должны быть
+            // возвращены запросом.
+            String[] queryFields = new String[]{
+                    ContactsContract.Contacts.DISPLAY_NAME
+            };
+            // Выполнение запроса - contactUri здесь выполняет функции
+            // условия "where"
+            Cursor c = getActivity().getContentResolver()
+                    .query(contactUri, queryFields, null, null, null);
+            try {
+                // Проверка получения результатов
+                if (c.getCount() == 0) {
+                    return;
+                }
+                // Извлечение первого столбца данных - имени подозреваемого.
+                c.moveToFirst();
+                String suspect = c.getString(0);
+                mCrime.setSuspect(suspect);
+                mSuspectButton.setText(suspect);
+            } finally {
+                c.close();
+            }
         }
     }
 
